@@ -8,19 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: prime-cache-aa85955
-        id: cache-step
+        id: prime-cache-aa85955
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: ~/.cache
           key: cache-aa85955
 
       - name: Show cache result
-        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Cache hit: ${{ steps.prime-cache-aa85955.outputs.cache-hit }}"
